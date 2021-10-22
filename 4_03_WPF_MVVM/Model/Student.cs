@@ -89,6 +89,13 @@ namespace _4_03_WPF_MVVM.Model
 
             return true;
         }
+        
+        public void Reset()
+        {
+            Name = Comment = string.Empty;
+            Score = 0;
+            TimeAdded = new DateTime();
+        }
         #endregion
     }
 }

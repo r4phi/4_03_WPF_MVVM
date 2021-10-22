@@ -21,9 +21,8 @@ namespace _4_03_WPF_MVVM.Model
             Students.Add(new Student { Name = "Alice", Score = 75 });
         }
 
-        public void Add(Student studentToAdd)
-        {
-            // ToDo, Student darf nur hinzufgefügt werden, wenn er nicht null ist
+        public void Add(Student studentToAdd) { 
+            Students.Add(studentToAdd);
         }
 
         public void Remove(Student studentToDelete)

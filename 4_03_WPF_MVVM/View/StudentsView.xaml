@@ -4,9 +4,47 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_4_03_WPF_MVVM.View"
+        xmlns:src="clr-namespace:_4_03_WPF_MVVM.ViewModel"
         mc:Ignorable="d"
         Title="StudentsView" Height="450" Width="800">
+
+    <Window.DataContext>
+        <src:StudentViewModel />
+    </Window.DataContext>
+
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.07*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Name" Width="45" VerticalContentAlignment="Center"/>
+            <TextBox Width="175" VerticalContentAlignment="Center" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="Score" Width="45" VerticalContentAlignment="Center"/>
+            <TextBox Width="54" VerticalContentAlignment="Center" Text="{Binding Path=Score, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Add a Student" Command="{Binding Path=AddCommand}"/>
+        </StackPanel>
+
+        <ListView HorizontalAlignment="Stretch"
+		  ItemsSource="{Binding Path=Students.Students}" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name"
+							DisplayMemberBinding="{Binding Path=Name}"
+							Width="100" />
+                    <GridViewColumn Header="Score"
+							DisplayMemberBinding="{Binding Path=Score}"
+							Width="100" />
+                    <GridViewColumn Header="Time Added"
+							DisplayMemberBinding="{Binding Path=TimeAdded}"
+							Width="100" />
+                    <GridViewColumn Header="Comment"
+							DisplayMemberBinding="{Binding Path=Comment}"
+							Width="100" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
