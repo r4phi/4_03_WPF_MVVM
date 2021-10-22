@@ -29,10 +29,12 @@ namespace _4_03_WPF_MVVM.ViewModel
 
             AddCommand = new RelayCommand(e =>
             {
-                Student.TimeAdded = DateTime.Now;
-                Student.Comment = $"This Student was added at {Student.TimeAdded}";
                 Students.Add(new Student
                 {
+                    Name = Name,
+                    Score = Score,
+                    Comment = $"This Student was added at {DateTime.Now}",
+                    TimeAdded = DateTime.Now
                 });
                 Student.Reset();
             }, c => true);
