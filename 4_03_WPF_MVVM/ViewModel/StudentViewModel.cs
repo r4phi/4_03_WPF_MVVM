@@ -37,7 +37,8 @@ namespace _4_03_WPF_MVVM.ViewModel
                     Comment = $"This Student was added at {DateTime.Now}",
                     TimeAdded = DateTime.Now
                 });
-                Student.Reset();
+                Name = string.Empty;
+                Score = 0;
             }, c => true);
 
             RemoveCommand = new RelayCommand(e =>
