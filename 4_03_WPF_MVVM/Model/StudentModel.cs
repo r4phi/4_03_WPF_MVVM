@@ -28,6 +28,10 @@ namespace _4_03_WPF_MVVM.Model
         public void Remove(Student studentToDelete)
         {
             // ToDo, Student darf nur gelöscht werden, wenn er nicht null ist
+            if(studentToDelete != null)
+            {
+                Students.Remove(studentToDelete);
+            }
         }
         #endregion
     }

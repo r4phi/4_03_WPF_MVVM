@@ -25,10 +25,13 @@
             <Label Content="Score" Width="45" VerticalContentAlignment="Center"/>
             <TextBox Width="54" VerticalContentAlignment="Center" Text="{Binding Path=Score, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Content="Add a Student" Command="{Binding Path=AddCommand}"/>
+            <Button Content="Remove a Student" Command="{Binding Path=RemoveCommand}"/>
         </StackPanel>
 
         <ListView HorizontalAlignment="Stretch"
-		  ItemsSource="{Binding Path=Students.Students}" Grid.Row="1">
+		  ItemsSource="{Binding Path=Students.Students}" 
+                  SelectedItem="{Binding Path=Student}"
+                  Grid.Row="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name"

@@ -23,8 +23,9 @@ namespace _4_03_WPF_MVVM.ViewModel
         public StudentViewModel()
         { 
             ExitCommand = new RelayCommand(e =>
-            { 
-                System.Environment.Exit(0); 
+            {
+                Console.WriteLine(Student);
+                Students.Remove(Student);
             }, c => true);
 
             AddCommand = new RelayCommand(e =>
@@ -41,7 +42,7 @@ namespace _4_03_WPF_MVVM.ViewModel
 
             RemoveCommand = new RelayCommand(e =>
             {
-
+                Students.Remove(Student);
             }, c => true);
         }
         #endregion
