@@ -21,33 +21,38 @@
 
         <StackPanel Orientation="Horizontal">
             <Label Content="Name" Width="45" VerticalContentAlignment="Center"/>
-            <TextBox Width="175" VerticalContentAlignment="Center" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Width="175" VerticalContentAlignment="Center" Text="{Binding Path=StudentToAdd.Name, UpdateSourceTrigger=PropertyChanged}"/>
             <Label Content="Score" Width="45" VerticalContentAlignment="Center"/>
-            <TextBox Width="54" VerticalContentAlignment="Center" Text="{Binding Path=Score, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Content="Add a Student" Command="{Binding Path=AddCommand}"/>
-            <Button Content="Remove a Student" Command="{Binding Path=RemoveCommand}"/>
+            <TextBox Width="54" VerticalContentAlignment="Center" Text="{Binding Path=StudentToAdd.Score, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Add" Command="{Binding Path=AddCommand}" Margin="10,0,0,0"/>
+            <Button Content="Remove" Command="{Binding Path=RemoveCommand}" Margin="10,0,0,0" />
         </StackPanel>
 
         <ListView HorizontalAlignment="Stretch"
 		  ItemsSource="{Binding Path=Students.Students}" 
-                  SelectedItem="{Binding Path=Student}"
+                  SelectedItem="{Binding Path=StudentToDelete}"
                   Grid.Row="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name"
 							DisplayMemberBinding="{Binding Path=Name}"
-							Width="100" />
+							Width="80" />
                     <GridViewColumn Header="Score"
 							DisplayMemberBinding="{Binding Path=Score}"
-							Width="100" />
+							Width="40" />
                     <GridViewColumn Header="Time Added"
 							DisplayMemberBinding="{Binding Path=TimeAdded}"
-							Width="100" />
+							Width="150" />
                     <GridViewColumn Header="Comment"
 							DisplayMemberBinding="{Binding Path=Comment}"
-							Width="100" />
+							Width="300" />
                 </GridView>
             </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Remove" Command="{Binding Path=RemoveCommand}"></MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
     </Grid>
 </Window>

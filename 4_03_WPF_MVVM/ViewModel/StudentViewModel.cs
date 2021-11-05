@@ -10,13 +10,21 @@ using System.Windows.Input;
 
 namespace _4_03_WPF_MVVM.ViewModel
 {
-    class StudentViewModel
+    class StudentViewModel : INotifyPropertyChanged
     {
         #region properties
         public StudentModel Students { get; private set; } = new StudentModel();
-        public Student Student { get; set; } = new Student();
-        public String Name { get; set; } = string.Empty;
-        public int Score { get; set; }
+        private Student studentToAdd = new Student();
+        public Student StudentToAdd
+        {
+            get => studentToAdd;
+            set
+            {
+                studentToAdd = value;
+                RaisePropertyChanged();
+            }
+        }
+        public Student StudentToDelete { get; set; } = null;
         #endregion
 
         #region methods
@@ -24,27 +32,23 @@ namespace _4_03_WPF_MVVM.ViewModel
         { 
             ExitCommand = new RelayCommand(e =>
             {
-                Console.WriteLine(Student);
-                Students.Remove(Student);
             }, c => true);
 
             AddCommand = new RelayCommand(e =>
             {
                 Students.Add(new Student
                 {
-                    Name = Name,
-                    Score = Score,
-                    Comment = $"This Student was added at {DateTime.Now}",
+                    Name = StudentToAdd.Name,
+                    Score = StudentToAdd.Score,
                     TimeAdded = DateTime.Now
                 });
-                Name = string.Empty;
-                Score = 0;
+                StudentToAdd = new Student();
             }, c => true);
 
             RemoveCommand = new RelayCommand(e =>
             {
-                Students.Remove(Student);
-            }, c => true);
+                Students.Remove(StudentToDelete);
+            }, c => StudentToDelete != null);
         }
         #endregion
 
@@ -52,6 +56,15 @@ namespace _4_03_WPF_MVVM.ViewModel
         public ICommand ExitCommand { get; private set; }
         public ICommand AddCommand { get; private set; }
         public ICommand RemoveCommand { get; private set; }
+        #endregion
+
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void RaisePropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         #endregion
     }
 }

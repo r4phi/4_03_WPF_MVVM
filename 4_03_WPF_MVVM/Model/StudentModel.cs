@@ -21,17 +21,17 @@ namespace _4_03_WPF_MVVM.Model
             Students.Add(new Student { Name = "Alice", Score = 75 });
         }
 
-        public void Add(Student studentToAdd) { 
+        public void Add(Student studentToAdd)
+        {
+            if (studentToAdd == null) return;
             Students.Add(studentToAdd);
         }
 
         public void Remove(Student studentToDelete)
         {
             // ToDo, Student darf nur gelöscht werden, wenn er nicht null ist
-            if(studentToDelete != null)
-            {
-                Students.Remove(studentToDelete);
-            }
+            if (studentToDelete == null) return;
+            Students.Remove(studentToDelete);
         }
         #endregion
     }

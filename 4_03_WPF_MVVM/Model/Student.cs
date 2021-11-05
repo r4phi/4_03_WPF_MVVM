@@ -44,16 +44,17 @@ namespace _4_03_WPF_MVVM.Model
             }
         }
 
-        private string comment = string.Empty;
-        public string Comment
-        {
-            get => comment;
-            set
-            {
-                comment = value;
-                RaisePropertyChanged();
-            }
-        }
+        //private string comment = string.Empty;
+        //public string Comment
+        //{
+        //    get => comment;
+        //    set
+        //    {
+        //        comment = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
+        public string Comment => $"This student was added at {TimeAdded}";
         #endregion
 
         #region INotifyPropertyChanged
