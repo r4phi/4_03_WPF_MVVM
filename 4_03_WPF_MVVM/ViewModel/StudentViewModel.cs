@@ -32,18 +32,14 @@ namespace _4_03_WPF_MVVM.ViewModel
         { 
             ExitCommand = new RelayCommand(e =>
             {
+                System.Environment.Exit(0);
             }, c => true);
 
             AddCommand = new RelayCommand(e =>
             {
-                Students.Add(new Student
-                {
-                    Name = StudentToAdd.Name,
-                    Score = StudentToAdd.Score,
-                    TimeAdded = DateTime.Now
-                });
+                Students.Add(StudentToAdd);
                 StudentToAdd = new Student();
-            }, c => true);
+            }, c => StudentToAdd.Name.Length != 0);
 
             RemoveCommand = new RelayCommand(e =>
             {

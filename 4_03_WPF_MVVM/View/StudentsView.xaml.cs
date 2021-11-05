@@ -23,5 +23,10 @@ namespace _4_03_WPF_MVVM.View
         {
             InitializeComponent();
         }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
