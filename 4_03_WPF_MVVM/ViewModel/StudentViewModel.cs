@@ -37,6 +37,7 @@ namespace _4_03_WPF_MVVM.ViewModel
 
             AddCommand = new RelayCommand(e =>
             {
+                StudentToAdd.TimeAdded = DateTime.Now;
                 Students.Add(StudentToAdd);
                 StudentToAdd = new Student();
             }, c => StudentToAdd.Name.Length != 0);
